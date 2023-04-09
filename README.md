@@ -1,3 +1,1 @@
-On a fais un bête de bot discord non je deconne c'est juste un bote pour le fun (pour le moment)
-
----
+							A lot of file for just one discord bot.
