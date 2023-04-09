@@ -1,3 +1,3 @@
-const {empl} = require('./donné & autre/emplois');
+const {testz} = require('./donné & autre/note');
 
-empl()
+testz()
