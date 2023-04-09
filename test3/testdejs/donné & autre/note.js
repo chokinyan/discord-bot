@@ -45,10 +45,11 @@ const testz = async function obj() {
     };
     //-------------------------------------------------------------------------------------------------------------------------------
     await page.click("body > div.header > nav > ul.services-shortcut > li:nth-child(6) > a");
-    await page.waitForSelector("#releve-eleve")
+    await page.waitForSelector("#releve-eleve");
+    await page.waitForSelector("#idPeriode");
     
     //await page.select("#idPeriode","[27]");
-    const nb_bultin = await page.$eval("#idPeriode", el => el.textContent.trim());
+    //const nb_bultin = await page.$eval("#idPeriode", el => el.textContent.trim());
     /*for (let i = 26;i < 29;i++){
         console.log(i);
         await page.select(`#idPeriode`,`[${i}]`);
@@ -57,6 +58,7 @@ const testz = async function obj() {
         await page.screenshot({path : `test3/testdejs/image/note${i-25}.png`,clip:{x:bxnote["x"],y:bxnote["y"],width:bxnote["width"],height:bxnote["height"]}});
     };*/
     
+    await page.click("#idPeriode");
     //#idPeriode > option:nth-child(1)
     //await browser.close()
 };
