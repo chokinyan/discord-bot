@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@discordjs/voice": "^0.14.0",
+    "avconv": "^3.1.0",
+    "discord.js": "^14.7.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "puppeteer": "^19.7.0",
+    "puppeteer-core": "^19.7.0",
+    "request": "^2.88.2",
+    "ytdl-core": "^4.11.2"
+  }
+}
