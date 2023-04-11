@@ -7,7 +7,7 @@ const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
 
 const compcom = [{name : 'select',comm : 'test'},{name : 'message',comm : 'message'},{name : 'note',comm : 'note'}];
-/* name : file name, comm : compent name \\ alwais edit after add an file with compent*/
+/* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 
 //------------------------------------------------------------------------------------------
 const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildBans,GatewayIntentBits.DirectMessages,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent,GatewayIntentBits.AutoModerationConfiguration,GatewayIntentBits.AutoModerationExecution,GatewayIntentBits.DirectMessageReactions,GatewayIntentBits.DirectMessageTyping,GatewayIntentBits.GuildEmojisAndStickers,GatewayIntentBits.GuildIntegrations,GatewayIntentBits.GuildInvites,GatewayIntentBits.GuildMembers,GatewayIntentBits.GuildMessageReactions,GatewayIntentBits.GuildMessageTyping,GatewayIntentBits.GuildPresences,GatewayIntentBits.GuildScheduledEvents,GatewayIntentBits.GuildVoiceStates,GatewayIntentBits.GuildWebhooks]});
