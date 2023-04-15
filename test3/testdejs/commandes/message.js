@@ -1,6 +1,5 @@
 const {SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder} = require("discord.js");
 const puppeteer = require('puppeteer');
-const {identifiant,mdp} = require('../donné & autre/config.json');
 const {testz} = require('../donné & autre/objet_mess_return');
 
 module.exports = {
