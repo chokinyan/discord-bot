@@ -1,3 +1,7 @@
-const {testz} = require('./donné & autre/note');
+const {sleep} = require('./donné & autre/wait');
 
-testz()
+(async () =>{
+    console.log('bjt');
+    await sleep(10000);
+    console.log('aur');
+})();

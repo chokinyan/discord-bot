@@ -31,14 +31,15 @@ client.once(Events.ClientReady, () => {
 client.on(Events.InteractionCreate, async interaction  => {
 
 
-	if(interaction.component != undefined){
+	if(interaction.component !== undefined){
+
 		const comm = compcom.map(x => (x.name == interaction.customId)).indexOf(true);
 		/*if error TypeError: Cannot read properties of undefined (reading 'comm')
 			go line 10
 		*/
 		try{
-		const command = client.commands.get(compcom[comm].comm);
-		await command["excomp"](interaction);
+			const command = client?.commands?.get(compcom[comm].comm);
+			await command["excomp"](interaction);
 		}
 		catch(e){
 			interaction.update({content : `${e}`});

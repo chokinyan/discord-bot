@@ -4,12 +4,14 @@ module.exports = {
     data : test = new SlashCommandBuilder()
         .setName("clear")
         .setDescription("clear message")
-        .addIntegerOption(option => {
-            option.setName("nb_clear")
-            .required("true")
-        }),
+        .addIntegerOption(option =>
+            option.setName("nombre")
+            .setDescription("nombre de message a clear")
+            .setRequired(true)
+        ),
 
     async excute(interaction){
-        return 0;
+        await interaction.showModal();
+
     },
 };
