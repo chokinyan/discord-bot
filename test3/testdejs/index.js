@@ -5,8 +5,10 @@ const { Client, Collection, Events, GatewayIntentBits,StringSelectMenuComponent}
 const { token} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
+const {sleep} = require('./donné & autre/wait');
+const { error } = require('node:console');
 
-const compcom = [{name : 'select',comm : 'test'},{name : 'message',comm : 'message'},{name : 'note',comm : 'note'}];
+const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom'}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 
 //------------------------------------------------------------------------------------------
@@ -52,25 +54,31 @@ client.on(Events.InteractionCreate, async interaction  => {
 
 	if(interaction.component !== undefined){
 
-		const comm = compcom.map(x => (x.name == interaction.customId)).indexOf(true);
-		/*if error TypeError: Cannot read properties of undefined (reading 'comm')
+		//const compot = compcom[compcom?.map(x => (interaction?.customId in x?.name))?.indexOf(true)]?.comm;
+		/*if error TypeError: Cannot read properties of undefined (reading 'compot')
 			go line 10
 		*/
+		//console.log(compcom?.map(x => x.name.map(x => x == "validation")));
+		for (const i of compcom){
+			if (i.name.includes("validation")){
+				compot = i.comm;
+			};
+		};
+		
 		try{
-			const command = client?.commands?.get(compcom[comm].comm);
+			//console.log(client?.commands);
+			const command = client?.commands?.get(compot);
 			await command["excomp"](interaction);
 		}
 		catch(e){
-			interaction.update({content : `${e}`});
+			interaction.update({content : `compent error => \n${e}`});
 		};
 	};
-
-	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
-
+	
 	try {
 		await command["excute"](interaction);
 	} catch (error) {
@@ -94,7 +102,13 @@ client.on(Events.MessageCreate , async message => {
 	test.reponse(message,client);
 });
 
+client.on(Events.Error, async er => {
+	client.users.send
+});
+
+
+
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
-	client.user.setPresence({activities:[{name : 'utile pour etre coder mtn '}],status : 'dnd'});
+	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
 });

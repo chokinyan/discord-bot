@@ -1,11 +1,11 @@
 require("ffmpeg-static");
-const {SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder, StringSelectMenuInteraction} = require("discord.js");
+const {SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder} = require("discord.js");
 const voc = require("./voc");
 
 module.exports = {
     data : test = new SlashCommandBuilder()
     .setName("test")
-    .setDescription("creator bod exclu for test"),
+    .setDescription("creator bot exclu for test"),
 
     async excute(interaction){
         if(interaction.user.id != 489650864441524232){

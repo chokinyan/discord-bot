@@ -1,5 +1,6 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(s) {
+    s *= 1000;
+    return new Promise(resolve => setTimeout(resolve, s));
 };
 
 module.exports = {sleep};
