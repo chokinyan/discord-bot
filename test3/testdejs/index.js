@@ -2,11 +2,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits,StringSelectMenuComponent} = require('discord.js');
-const { token} = require('../testdejs/donné & autre/config.json');
+const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
-const {sleep} = require('./donné & autre/wait');
-const { error } = require('node:console');
 
 const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom'}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
@@ -33,6 +31,14 @@ const client = new Client({ intents: [
 	GatewayIntentBits.GuildWebhooks,
 	]});
 //------------------------------------------------------------------------------------------
+
+//function notif() {
+//	new Notification("bot ready", {
+//		body: `${client.user} is ready`,
+//		timestamp : 5
+//	});
+//};
+
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commandes');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -45,7 +51,7 @@ for (const file of commandFiles) {
 //------------------------------------------------------------------------------------------
 client.once(Events.ClientReady, () => {
 	use_commands.reset(client.guilds.cache.map(guild => guild.id));
-	console.log(`ready ${client.user}`);
+	client.users.send(bot_owner_id, `${client.user} is ready`);
 });
 //1074436303908778096
 //------------------------------------------------------------------------------------------
@@ -60,7 +66,7 @@ client.on(Events.InteractionCreate, async interaction  => {
 		*/
 		//console.log(compcom?.map(x => x.name.map(x => x == "validation")));
 		for (const i of compcom){
-			if (i.name.includes("validation")){
+			if (i.name.includes(interaction?.customId)){
 				compot = i.comm;
 			};
 		};
@@ -103,12 +109,11 @@ client.on(Events.MessageCreate , async message => {
 });
 
 client.on(Events.Error, async er => {
-	client.users.send
+	client.users.send(bot_owner_id,er.message);
 });
-
-
 
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
 	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
+	
 });

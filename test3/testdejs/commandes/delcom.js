@@ -1,6 +1,7 @@
 const {SlashCommandBuilder,ActionRowBuilder,ButtonBuilder, ButtonStyle} = require("discord.js");
 const { REST, Routes } = require('discord.js');
 const { clientId,token} = require('../donné & autre/config.json');
+const {sleep} = require('../donné & autre/wait')
 
 //const rest = new REST().setToken(token);
 
@@ -33,20 +34,22 @@ module.exports = {
                 );
             await interaction.reply({content : `supprimer la commande dont l'id est : ${interaction?.options?.getString('id')} ?`,components : [validation],ephemeral : true});
         };
-        
-
     },
 
     async excomp(interaction){
-        if (interaction?.component?.label == "yes"){
-            /*REST.delete(Routes.applicationCommand(clientId, interaction?.options?.getString('id')))
-	        .then(() => interaction.update({content : 'Successfully deleted application command', ephemeral : true}))
-	        .catch(interaction.update({content : `${error}`, ephemeral : true}));*/
-            await interaction.update({content : 'Successfully deleted application command', ephemeral : true})
+        if (interaction?.component?.label == "yes") {
+            const rest = new REST().setToken(token);
+            rest.delete(Routes.applicationCommand(clientId, interaction?.options?.getString('id')))
+                .then(() => interaction.update({ content: 'Successfully deleted application command', ephemeral: true }).then(async msg => {
+                    await sleep(5);
+                    msg.delete();
+                }))
+                .catch(interaction.update({ content: `error`, ephemeral: true }));
         }
         else{
-            //console.log(await interaction?.message?.delete(interaction?.message)); 
-            interaction
+            interaction.update("ok").then(msg => {
+                msg.delete();
+            })
         };
     },
 };

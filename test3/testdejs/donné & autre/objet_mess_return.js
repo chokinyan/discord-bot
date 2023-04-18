@@ -47,6 +47,7 @@ const testz = async function obj(rec_mess = false,num = 1) {
         };
     };
     
+    await page.waitForSelector("body > div.header > nav > ul.services-shortcut > li:nth-child(2) > a");
     await page.click("body > div.header > nav > ul.services-shortcut > li:nth-child(2) > a");
 
     const test = await  page.$$eval('li',element => element.map(x => x.className));

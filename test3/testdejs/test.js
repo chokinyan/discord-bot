@@ -1,7 +1,3 @@
-const {sleep} = require('./donné & autre/wait');
+const {test} = require('./web scraping');
 
-(async () =>{
-    console.log('bjt');
-    await sleep(10000);
-    console.log('aur');
-})();
+test;
