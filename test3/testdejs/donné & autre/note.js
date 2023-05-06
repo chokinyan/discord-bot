@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const {identifiant,mdp,navigatorpath} = require('./config.json');
 
 const testz = async function obj() {
-    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless : false ,slowMo: 10 /*,product : 'chrome'*/});
+    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless : 'new' ,slowMo: 10 /*,product : 'chrome'*/});
     const page = await browser.newPage();
     const keyboard = page.keyboard
     await page.goto("https://www.monbureaunumerique.fr/");
@@ -47,20 +47,17 @@ const testz = async function obj() {
     await page.click("body > div.header > nav > ul.services-shortcut > li:nth-child(6) > a");
     await page.waitForSelector("#releve-eleve");
     await page.waitForSelector("#idPeriode");
-    
-    //await page.select("#idPeriode","[27]");
-    //const nb_bultin = await page.$eval("#idPeriode", el => el.textContent.trim());
-    /*for (let i = 26;i < 29;i++){
+
+    for (let i = 26;i < 29;i++){
         console.log(i);
         await page.select(`#idPeriode`,`[${i}]`);
         const note = await page.$("#releve-eleve");
         const bxnote = await note.boundingBox();
         await page.screenshot({path : `test3/testdejs/image/note${i-25}.png`,clip:{x:bxnote["x"],y:bxnote["y"],width:bxnote["width"],height:bxnote["height"]}});
-    };*/
+    };
     
     await page.click("#idPeriode");
-    //#idPeriode > option:nth-child(1)
-    //await browser.close()
+    await browser.close()
 };
 
 //#releve-eleve

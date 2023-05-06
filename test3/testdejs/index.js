@@ -1,7 +1,7 @@
 //documentation : https://discord.js.org/#/
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits,StringSelectMenuComponent} = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
@@ -55,7 +55,7 @@ client.once(Events.ClientReady, () => {
 	notif.notify({
 		title : 'Bot Discord',
 		message : `bot ${client.user} is ready`,
-		time : 5
+		time : 2
 	});
 	
 });

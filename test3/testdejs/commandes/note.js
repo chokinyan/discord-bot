@@ -39,19 +39,19 @@ module.exports = {
     
     async excomp(interaction){
 
-        await interaction.update({content : "veuillez patienter"});
+        await interaction.update({content : "veuillez patienter",components : []});
         
-        await testz();
-
-        await interaction.editReply({files : [{attachment: `test3/testdejs/image/note${interaction.values}.png` }],content : "",ephemeral : true});
+        testz().then(async () =>{
+            await interaction.editReply({files : [{attachment: `test3/testdejs/image/note${interaction.values}.png` }],content : "",ephemeral : true});
+        });
         
-        /*const imagePath = path.join(__dirname, 'image');
+        const imagePath = path.join(__dirname, 'image');
         const imageFiles = fs.readdirSync(imagePath).filter(file => file.startsWith("note"));
-g
+
         for (const file of imageFiles) {
 	    const filePath = path.join(imagePath, file);
         fs.unlinkSync(filePath);
-        };*/
+        };
         
     }
 };
