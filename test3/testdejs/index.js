@@ -5,6 +5,7 @@ const { Client, Collection, Events, GatewayIntentBits,StringSelectMenuComponent}
 const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
+const notif = require('node-notifier');
 
 const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom'}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
@@ -51,7 +52,12 @@ for (const file of commandFiles) {
 //------------------------------------------------------------------------------------------
 client.once(Events.ClientReady, () => {
 	use_commands.reset(client.guilds.cache.map(guild => guild.id));
-	client.users.send(bot_owner_id, `${client.user} is ready`);
+	notif.notify({
+		title : 'Bot Discord',
+		message : `bot ${client.user} is ready`,
+		time : 5
+	});
+	
 });
 //1074436303908778096
 //------------------------------------------------------------------------------------------
@@ -59,17 +65,13 @@ client.on(Events.InteractionCreate, async interaction  => {
 
 
 	if(interaction.component !== undefined){
-
 		//const compot = compcom[compcom?.map(x => (interaction?.customId in x?.name))?.indexOf(true)]?.comm;
 		/*if error TypeError: Cannot read properties of undefined (reading 'compot')
 			go line 10
 		*/
 		//console.log(compcom?.map(x => x.name.map(x => x == "validation")));
 		for (const i of compcom){
-			if (i.name.includes(interaction?.customId)){
-				compot = i.comm;
-			};
-		};
+			if (i.name.includes(interaction?.customId)){compot = i.comm}};
 		
 		try{
 			//console.log(client?.commands);
