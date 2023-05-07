@@ -36,15 +36,15 @@ module.exports = {
         };
     },
 
-    async excomp(interaction){
+    async excomp(interaction,id){
         if (interaction?.component?.label == "yes") {
             const rest = new REST().setToken(token);
-            rest.delete(Routes.applicationCommand(clientId, interaction?.options?.getString('id')))
+            rest.delete(Routes.applicationCommand(clientId, id))
                 .then(() => interaction.update({ content: 'Successfully deleted application command', ephemeral: true }).then(async msg => {
                     await sleep(5);
                     msg.delete();
                 }))
-                .catch(interaction.update({ content: `error`, ephemeral: true }));
+                .catch(x=>{interaction.update({ content: `${x}`, ephemeral: true })});
         }
         else{
             interaction.update("ok").then(msg => {
