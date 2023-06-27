@@ -12,32 +12,12 @@ module.exports = {
             interaction.reply("not anable to do this command");
         }
         else{
-            const waw = new ActionRowBuilder()
-                .setComponents(
-                    new StringSelectMenuBuilder()
-                    .setCustomId('select')
-                    .setPlaceholder("Rien n'a été selectionné")
-                    .setOptions(
-                        {
-                            label : 'test',
-                            description : 'test1',
-                            value : 'test1'
-                        },
-                        {
-                            label : 'test2',
-                            description : 'test2',
-                            value : 'test2'
-                        }
-                    ),
-                );
-            
-            await interaction.reply({content :'test',components : [waw], ephemeral: true});
-        };
-    },
+            await interaction.reply("test");
+            await interaction.client.users.send("343684001355137025", `GG marsterclass`).then(x=>{
+                x?.reply("tg");
+            });
 
-    async excomp(interaction){
-        //console.log(interaction);
-        await interaction.update({content : `${interaction.values}`});
+        }      
     },
 
 };

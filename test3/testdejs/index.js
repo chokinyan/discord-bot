@@ -5,7 +5,6 @@ const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
-const notif = require('node-notifier');
 
 const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
@@ -33,13 +32,6 @@ const client = new Client({ intents: [
 	]});
 //------------------------------------------------------------------------------------------
 
-//function notif() {
-//	new Notification("bot ready", {
-//		body: `${client.user} is ready`,
-//		timestamp : 5
-//	});
-//};
-
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commandes');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -52,16 +44,11 @@ for (const file of commandFiles) {
 //------------------------------------------------------------------------------------------
 client.once(Events.ClientReady, () => {
 	use_commands.reset(client.guilds.cache.map(guild => guild.id));
-	notif.notify({
-		title : 'Bot Discord',
-		message : `bot ${client.user} is ready`,
-		time : 2,
-		icon : 'test3/testdejs/image/discord-logo.png'
-	});
+	console.log("bot is ready");
 });
 //------------------------------------------------------------------------------------------
 client.on(Events.InteractionCreate, async interaction  => {
-
+	
 	if(interaction.component !== undefined){
 		//const compot = compcom[compcom?.map(x => (interaction?.customId in x?.name))?.indexOf(true)]?.comm;
 		/*if error TypeError: Cannot read properties of undefined (reading 'compot')
@@ -110,10 +97,7 @@ client.on(Events.MessageCreate , async message => {
 });
 
 client.on(Events.Error, async er => {
-	notif.notify({
-		title : 'Discord Bot',
-		message : `error : ${er}`
-	});
+	console.error(er);
 });
 
 //------------------------------------------------------------------------------------------
