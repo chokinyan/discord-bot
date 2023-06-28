@@ -13,23 +13,20 @@ module.exports = {
         ),
 
     async excute(interaction){
+        const anime_name = interaction.options.getString('anime');
         interaction.reply("wait").then(mess =>{
             const parametre_P = {
-                url : "https://api.myanimelist.net/v2/anime?q='naruto'",
-                headers : {"X-MAL-CLIENT-ID" : anime_id},
-                params : {
-                    q : "naruto",
-                    nsfw : true,
-                    offset : 0
-                }
+                url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=0`,
+                headers : {"X-MAL-CLIENT-ID" : anime_id}
             };
-            const resultat = request.get(parametre_P,(err,_repp,body) =>{
+            request.get(parametre_P,(err,_repp,body) =>{
                 if(err){
                     console.log(err);
                 }
                 else{
-                    //console.log(body);
-                    mess.interaction?.editReply(`AAAAAAAAAAAAAAAAAAAA`);
+                    let animesrc_id = "";
+                    mess.interaction?.editReply(`${body.charAt(body.indexOf("id")+3)}`);
+                    
                 }
             });
         })

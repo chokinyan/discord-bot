@@ -95,11 +95,6 @@ client.on(Events.GuildMemberAdd, async member => {
 client.on(Events.MessageCreate , async message => {
 	test.reponse(message,client);
 });
-
-client.on(Events.Error, async er => {
-	console.error(er);
-});
-
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
 	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });

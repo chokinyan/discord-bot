@@ -1,11 +1,16 @@
-const request = require('request');
-//const {Client} = require("discord.js");
-
-//const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildBans,GatewayIntentBits.DirectMessages,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent,GatewayIntentBits.AutoModerationConfiguration,GatewayIntentBits.AutoModerationExecution,GatewayIntentBits.DirectMessageReactions,GatewayIntentBits.DirectMessageTyping,GatewayIntentBits.GuildEmojisAndStickers,GatewayIntentBits.GuildIntegrations,GatewayIntentBits.GuildInvites,GatewayIntentBits.GuildMembers,GatewayIntentBits.GuildMessageReactions,GatewayIntentBits.GuildMessageTyping,GatewayIntentBits.GuildPresences,GatewayIntentBits.GuildScheduledEvents,GatewayIntentBits.GuildVoiceStates,GatewayIntentBits.GuildWebhooks]});
-
-const url = "https://www.monbureaunumerique.fr/";
-const rep = request.get("https://educonnect.education.gouv.fr/idp/profile/SAML2/POST/SSO?execution=e2s1");
+const {anime_id} = require('./donné & autre/config.json');
 
 
-//console.log(rep.listeners("pipe").map(x => x.prototype));
-console.log("uffyudt-uksydtkytdykdkuduk")
+
+/*(async () =>{
+    const test = await fetch("https://api.myanimelist.net/v2/anime?q='naruto'",{
+    method : "GET",
+    headers : {"X-MAL-CLIENT-ID" : anime_id}
+    });
+    //console.log(test);
+    const res = await test.json();
+    console.log(res);
+})();*/
+
+let zz = "id : ebjhfzvkfz, id";
+console.log(zz.charAt(5))
