@@ -16,7 +16,7 @@ module.exports = {
 
     async excute(interaction){
         const anime_name = interaction.options.getString('anime');
-        interaction.reply("wait").then(mess =>{
+        await interaction.reply("wait").then(mess =>{
             const parametre_P = {
                 url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=0`,
                 headers : {"X-MAL-CLIENT-ID" : anime_id}
@@ -52,7 +52,7 @@ module.exports = {
                             .setAuthor({name : "my anime list api",iconURL : "https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png"})
                             .setImage(resultat.main_picture.medium)
                             .setColor(0x0000FF);
-                            mess.interaction?.editReply({embeds : [emb],content : " "});
+                            await mess.interaction?.editReply({embeds : [emb],content : " "});
                         };
                     });
                     

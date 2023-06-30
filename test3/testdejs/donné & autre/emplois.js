@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const {identifiant,mdp,navigatorpath} = require('./config.json');
 
 const empl = async function empl(){
-    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless :'new', slowMo : 10 /*,product : 'chrome'*/});
+    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless : "new", slowMo : 10 /*,product : 'chrome'*/});
     const page = await browser.newPage();
     const keyboard = page.keyboard
     await page.goto("https://www.monbureaunumerique.fr/");

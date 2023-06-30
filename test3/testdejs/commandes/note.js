@@ -39,7 +39,7 @@ module.exports = {
     
     async excomp(interaction){
 
-        await interaction.update({content : "veuillez patienter",components : []});
+        await interaction.editReply({content : "veuillez patienter",components : []});
         
         testz().then(async () =>{
             await interaction.editReply({files : [{attachment: `test3/testdejs/image/note${interaction.values}.png` }],content : "",ephemeral : true});

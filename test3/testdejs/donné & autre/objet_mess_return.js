@@ -5,7 +5,7 @@ const testz = async function obj(rec_mess = false,num = 1) {
     let listobjt = [];
     let mess = "";
     let tempmess = '';
-    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless : true ,slowMo: 10 /*,product : 'chrome'*/});
+    const browser = await puppeteer.launch({executablePath : navigatorpath ,headless : "new" ,slowMo: 10 /*,product : 'chrome'*/});
     const page = await browser.newPage();
     const keyboard = page.keyboard
     await page.goto("https://www.monbureaunumerique.fr/");
