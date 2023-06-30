@@ -13,4 +13,4 @@ const {anime_id} = require('./donné & autre/config.json');
 })();*/
 
 let zz = "id : ebjhfzvkfz, id";
-console.log(zz.charAt(5))
+console.log(zz.)

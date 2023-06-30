@@ -49,8 +49,8 @@ module.exports = {
         const imageFiles = fs.readdirSync(imagePath).filter(file => file.startsWith("note"));
 
         for (const file of imageFiles) {
-	    const filePath = path.join(imagePath, file);
-        fs.unlinkSync(filePath);
+	        const filePath = path.join(imagePath, file);
+            fs.unlinkSync(filePath);
         };
         
     }
