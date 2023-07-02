@@ -6,7 +6,7 @@ const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
 
-const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""}];
+const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime'],comm : "anime"}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 
 //------------------------------------------------------------------------------------------
@@ -56,6 +56,7 @@ client.on(Events.InteractionCreate, async interaction  => {
 		*/
 		for (const i of compcom){if (i.name.includes(interaction?.customId)){compot = i.comm}};
 		try{
+			/* file need same name as her commande name*/
 			const command = client?.commands?.get(compot);
 			for(const i of compcom){
 				if(i.comm == compot){return await command["excomp"](interaction,i.id_val)};
