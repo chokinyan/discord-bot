@@ -31,7 +31,6 @@ module.exports = {
                 const res = JSON.parse(body);
                 const animesrc_id = res?.data[0].node.id;
                 console.log(res);
-                //console.log(animesrc_id);
                 const animeinfo = {
                     url : `https://api.myanimelist.net/v2/anime/${animesrc_id}?fields=title,synopsis,rank,nsfw,rating`,
                     headers : {"X-MAL-CLIENT-ID" : anime_id}
@@ -61,7 +60,7 @@ module.exports = {
                             .setColor(0x0000FF)
                             .setImage(resultat?.main_picture?.medium)
                             .setFooter({text : "By the god the only one chokinyan", iconURL : "https://static1.personality-database.com/profile_images/cafc44b66144402fadf751bf4ff2486c.png"});
-                            await interaction.reply({embeds : [emb],components : [nextanime]});
+                            await interaction.reply({embeds : [emb],components : [nextanime],tts : true});
                         };
                     };
                 });
@@ -71,6 +70,10 @@ module.exports = {
     },
 
     async excomp(interaction){
-        console.log(interaction);
+        switch (interaction.CustomId){
+            case "nextanime":
+                
+                break;
+        }
     },
 };
