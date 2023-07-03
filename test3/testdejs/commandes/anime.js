@@ -17,6 +17,13 @@ module.exports = {
     async excute(interaction){
         const anime_name = interaction.options.getString('anime');
         const nsfw = interaction.channel.nsfw;
+        const nextanime = new ActionRowBuilder()
+                            .setComponents(
+                                new ButtonBuilder()
+                                .setCustomId("nextanime")
+                                .setLabel("➡️")
+                                .setStyle(ButtonStyle.Success)
+                            );
         const parametre_P = {
             url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=0`,
             headers : {"X-MAL-CLIENT-ID" : anime_id}
@@ -39,18 +46,12 @@ module.exports = {
                     else{
                         const resultat = JSON.parse(bodytwo);
                         if(!nsfw & nsfwanim.includes(resultat.rating)){
-                            await interaction.reply({content : "nsfw anime please use a nsfw channel"});
-                            await sleep(5);
-                            await interaction.deleteReply();
+                            const emb = new EmbedBuilder()
+                            .setDescription("nsfw anime please use a nsfw channel")
+                            .setFooter({text : ` "anime rechercher" : "${anime_name}", "page" : "0/100" `});
+                            await interaction.reply({content : " ",embeds : [emb],components : [nextanime]});
                         }
                         else{
-                            const nextanime = new ActionRowBuilder()
-                            .setComponents(
-                                new ButtonBuilder()
-                                .setCustomId("nextanime")
-                                .setLabel("➡️")
-                                .setStyle(ButtonStyle.Success)
-                            );
                             const emb = new EmbedBuilder()
                             .setAuthor({name : resultat.title})
                             .setDescription(resultat.synopsis)
@@ -89,6 +90,28 @@ module.exports = {
                 break;
         }
         off = eval(off);
+        if(off === 0){
+            copanime = new ActionRowBuilder()
+            .setComponents(
+                new ButtonBuilder()
+                .setCustomId("nextanime")
+                .setLabel("➡️")
+                .setStyle(ButtonStyle.Success)
+            );
+        }
+        else{
+            copanime = new ActionRowBuilder()
+            .setComponents(
+                new ButtonBuilder()
+                .setCustomId("prevanime")
+                .setLabel("⬅️")
+                .setStyle(ButtonStyle.Danger),
+                new ButtonBuilder()
+                .setCustomId("nextanime")
+                .setLabel("➡️")
+                .setStyle(ButtonStyle.Success)
+            );
+        }
         const parametre_P = {
             url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=${off}`,
             headers : {"X-MAL-CLIENT-ID" : anime_id}
@@ -111,33 +134,12 @@ module.exports = {
                     else{
                         const resultat = JSON.parse(bodytwo);
                         if(!nsfw & nsfwanim.includes(resultat.rating)){
-                            await interaction.reply({content : "nsfw anime please use a nsfw channel"});
-                            await sleep(5);
-                            await interaction.deleteReply();
+                            const emb = new EmbedBuilder()
+                            .setDescription("nsfw anime please use a nsfw channel")
+                            .setFooter({text : ` "anime rechercher" : "${anime_name}", "page" : "${off}/100" `});
+                            await interaction.update({content : " ",embeds : [emb],components : [copanime]});
                         }
                         else{
-                            if(off === 0){
-                                copanime = new ActionRowBuilder()
-                                .setComponents(
-                                    new ButtonBuilder()
-                                    .setCustomId("nextanime")
-                                    .setLabel("➡️")
-                                    .setStyle(ButtonStyle.Success)
-                                );
-                            }
-                            else{
-                                copanime = new ActionRowBuilder()
-                                .setComponents(
-                                    new ButtonBuilder()
-                                    .setCustomId("prevanime")
-                                    .setLabel("⬅️")
-                                    .setStyle(ButtonStyle.Danger),
-                                    new ButtonBuilder()
-                                    .setCustomId("nextanime")
-                                    .setLabel("➡️")
-                                    .setStyle(ButtonStyle.Success)
-                                );
-                            }
                             const emb = new EmbedBuilder()
                             .setAuthor({name : resultat.title})
                             .setDescription(resultat.synopsis)
