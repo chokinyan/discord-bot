@@ -4,7 +4,6 @@ const {anime_id} = require("../donné & autre/config.json");
 const {sleep} = require("../donné & autre/wait");
 const fs = require('fs');
 const nsfwanim = ["r","r+","rx"];
-let off = 0;
 
 module.exports = {
     data : test = new SlashCommandBuilder()
@@ -20,7 +19,7 @@ module.exports = {
         const anime_name = interaction.options.getString('anime');
         const nsfw = interaction.channel.nsfw;
         const parametre_P = {
-            url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=${off}`,
+            url : `https://api.myanimelist.net/v2/anime?q='${anime_name}'&nsfw=true&offset=0`,
             headers : {"X-MAL-CLIENT-ID" : anime_id}
         };
         request.get(parametre_P,(err,_repp,body) =>{
