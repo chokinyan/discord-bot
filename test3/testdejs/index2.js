@@ -12,5 +12,6 @@ const {anime_id} = require('./donné & autre/config.json');
     console.log(res);
 })();*/
 
-let zz = "id : ebjhfzvkfz, id";
-console.log(zz.)
+let zz = '"test":"non"';
+zz = "{" + zz + "}"
+console.log(zz)
