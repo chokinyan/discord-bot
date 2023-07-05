@@ -11,12 +11,8 @@ module.exports = {
         ),
 
     async excute(interaction){
-        //await interaction.reply("test");
-        await interaction.reply("test").then(msg=>{
-            msg.delete();
-            interaction.client.channels.cache.get(interaction.channelId).messages.fetch({ limit: interaction.options.getInteger('nombre') }).then(messages => {
-                messages.map(message => message.delete());
-              });
+        await interaction.client.channels.cache.get(interaction.channelId).messages.fetch({ limit: interaction.options.getInteger('nombre') }).then(messages => {
+            messages.map(message => message.delete());
         });
     },
 };

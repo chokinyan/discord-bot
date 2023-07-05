@@ -99,5 +99,5 @@ client.on(Events.MessageCreate , async message => {
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
 	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
-	
+	client.ws.ping
 });
