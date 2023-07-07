@@ -18,7 +18,6 @@ const get_anime  = (nom,off)=>{
                 console.error(err);
             }
             else{
-                console.log(body.data[0].node.id);
                 const parametreD = {
                     url : `https://api.myanimelist.net/v2/anime/${body.data[0].node.id}?fields=title,synopsis,rank,nsfw,rating`,
                     headers : {"X-MAL-CLIENT-ID" : anime_id},
