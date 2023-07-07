@@ -2,20 +2,29 @@ const fs = require('node:fs');
 const path = require('node:path')
 const { REST, Routes, Client,GatewayIntentBits } = require('discord.js');
 const { clientId, token } = require('./donné & autre/config.json');
+const os = require('os');
 
 module.exports = {
 	reset : async function restart(guildIds){ 
+		const current_os = os.platform();
 		const commands = [];
 		// Grab all the command files from the commands directory you created earlier
 		const commandsPath = path.join(__dirname, 'commandes');
 		const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
+		
 		// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
-		for (const file of commandFiles) {
-			const command = require(`${commandsPath}\\${file}`);
-			commands.push(command.data.toJSON());
+		if(current_os === "linux" || current_os === "darwin"){
+			for (const file of commandFiles) {
+				const command = require(`${commandsPath}/${file}`);
+				commands.push(command.data.toJSON());
+			};
 		}
-
+		else{
+			for (const file of commandFiles) {
+				const command = require(`${commandsPath}\\${file}`);
+				commands.push(command.data.toJSON());
+			};
+		};
 		// Construct and prepare an instance of the REST module
 		const rest = new REST({ version: '10' }).setToken(token);
 

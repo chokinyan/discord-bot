@@ -4,6 +4,7 @@
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "node",
             "request": "launch",
@@ -12,6 +13,15 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\test3\\testdejs\\index.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name" : "codespace launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/test3/testdejs/index.js"
         }
     ]
 }
