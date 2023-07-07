@@ -2,9 +2,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
-const {token,bot_owner_id} = require('../testdejs/donné & autre/config.json');
+const {token} = require('../testdejs/donné & autre/config.json');
 const test = require('../testdejs/donné & autre/reponse')
 const use_commands = require('./use_commands');
+const {sleep} = require('./donné & autre/wait');
+
+
 
 const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
@@ -98,6 +101,18 @@ client.on(Events.MessageCreate , async message => {
 });
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
-	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
-	client.ws.ping
+	first();
 });
+
+
+const first = async ()=>{
+	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
+	await sleep(15);
+	two();
+};
+
+const two = async ()=>{
+	client.user.setPresence({ activities: [{ name: "y en a ils perdent beaucoup de temps pour rien" }], status: 'dnd' });
+	await sleep(15);
+	first();
+};

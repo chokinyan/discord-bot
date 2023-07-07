@@ -4,8 +4,6 @@ let mecrelouid = 0
 module.exports = {
     reponse : function reponse(message,client){
         let croispas = Math.floor(Math.random()*101);
-        //console.log(`${croispas} de ${message.author} avec ${message.content}`);
-        //console.log(`mais il parle bc ${tg}`)
         if (message.content.includes(client.user)){
             message.reply("Ils se prend pour qui celui-la a tag la planete là")
         }
