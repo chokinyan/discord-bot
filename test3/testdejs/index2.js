@@ -1,38 +1,36 @@
-const {sp_id,sp_sid} = require('./donné & autre/config.json');
+const {twitch_id,twitch_sid} = require('./donné & autre/config.json');
 const request = require('request');
 
-const get_api_key = new Promise((resolve,reject)=>{
-    const para = {
-        url : 'https://accounts.spotify.com/api/token',
-        headers : {
-            'Content-type' : 'application/x-www-form-urlencoded',
-           'Authorization': 'Basic ' + btoa(sp_id + ':' + sp_sid).toString('base64')
+const parametre = {
+    url : "https://id.twitch.tv/oauth2/token",
+    headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
+    formData : {client_id : twitch_id,
+            client_secret : twitch_sid,
+            grant_type : 'client_credentials'
         },
-        body : 'grant_type=client_credentials',
-        json : true
-    };
+    json : true
+};
 
-    request.post(para,(err,_rep,body)=>{
-        if(err){
-            console.error(err);
-        }
-        else{
-            resolve(body.access_token);
+request.post(parametre,(err,_rep,body)=>{
+    if(err){
+        console.error(err);
+    }
+    else{
+        const para = {
+            url : 'https://api.twitch.tv/helix/users?login=',
+            headers : {
+                Authorization : `Bearer ${body.access_token}`,
+                "Client-Id" : twitch_id
+            },
+            json : true
         };
-    });
-});
-(async ()=>{
-    const api_key = await get_api_key;
-    const parametre = {
-        url : `https://accounts.spotify.com/authorize?client_id=${sp_id}&redirect_uri=https://chokinyan.w3spaces.com/index.html&scope=user-read-playback-state%20&response_type=${api_key}&show_dialog=true` 
-    };
-    request.get(parametre,(err,_rep,body)=>{
-        if(err){
-            console.error(err);
-        }
-        else{
-            console.log(body);
-        };
-    });
-})();
-//`https://accounts.spotify.com/authorize?client_id=${sp_id}&redirect_uri=https://chokinyan.w3spaces.com/index.html&scope=user-read-playback-state%20&response_type=${api_token}&show_dialog=true`
+        request.get(para,(errt,_repp,bodyt)=>{
+            if(errt){
+                console.error(err);
+            }
+            else{
+                console.log(bodyt);
+            }
+        })
+    }
+})
