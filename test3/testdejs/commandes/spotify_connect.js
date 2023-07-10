@@ -30,6 +30,17 @@ module.exports = {
 
     async excute(interaction){
         const api_key = await get_api_key;
-        interaction.reply({content : `https://accounts.spotify.com/authorize?client_id=${sp_id}&redirect_uri=https://chokinyan.w3spaces.com/index.html&scope=user-read-playback-state%20&response_type=token&show_dialog=true`})
+        request.get({url : `https://accounts.spotify.com/authorize?client_id=${sp_id}&redirect_uri=https://chokinyan.w3spaces.com/index.html&scope=user-read-playback-state%20&response_type=token&show_dialog=true`},async (err,rep,body)=>{
+            if(err){
+                console.error(err);
+            }
+            else{
+                console.log(rep);
+                console.log("-----------------------------------------------------------------");
+                console.log(body);
+                //await interaction.reply({content: `${body}`});
+            };
+        });
+        //interaction.reply({content : `https://accounts.spotify.com/authorize?client_id=${sp_id}&redirect_uri=https://chokinyan.w3spaces.com/index.html&scope=user-read-playback-state%20&response_type=token&show_dialog=true`})
     },
 };
