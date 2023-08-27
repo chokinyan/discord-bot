@@ -3,13 +3,11 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const {token} = require('../testdejs/donné & autre/config.json');
-const test = require('../testdejs/donné & autre/reponse')
+const test = require('../testdejs/donné & autre/reponse');
 const use_commands = require('./use_commands');
 const {sleep} = require('./donné & autre/wait');
-
-
-
-const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"}];
+const {run_code} = require("./donné & autre/code_run");
+const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"},{name : ['language'],comm : "excod"}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 
 //------------------------------------------------------------------------------------------
@@ -70,7 +68,7 @@ client.on(Events.InteractionCreate, async interaction  => {
 			interaction.update({content : `compent error => \n${e}`});
 		};
 	};
-
+	
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
@@ -80,6 +78,7 @@ client.on(Events.InteractionCreate, async interaction  => {
 			if(interaction.commandName == "delcom"){x.id_val = (x.comm == 'delcom') ? interaction?.options?.getString('id') : x.id_val};
 		});
 		await command["excute"](interaction);
+		return interaction;
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!',ephemeral : true});
@@ -97,14 +96,44 @@ client.on(Events.GuildMemberAdd, async member => {
 });
 
 client.on(Events.MessageCreate , async message => {
-	test.reponse(message,client);
+	//test.reponse(message,client);
+	var chan_mess = await message.channel.messages.fetch({limit : 2});
+	if(chan_mess.at(1).author.id === client.user.id && chan_mess.at(1).content.includes("envoyer votre code en")){
+		var language = chan_mess.at(1).content.slice(22);
+		if(chan_mess.at(0).attachments.size !== 0){
+			fetch(chan_mess.at(0).attachments.at(0)?.url)
+				.then((rep)=>{rep?.text().then((txt)=>{
+					run_code(txt,`${language}`)
+					.then((cmd)=>{
+						message.reply(cmd)
+					})
+					.catch((err)=>{
+						message.reply(err)
+					})
+				})
+			})
+			.catch((err)=>{
+				console.error(err)
+			})
+		}
+		else{
+			run_code(chan_mess.at(0).content,language).then((cmd)=>{
+				message.reply(cmd);
+			})
+			.catch((err)=>{
+				message.reply(err);
+			});
+		};
+	};
 });
+
+
 //------------------------------------------------------------------------------------------
 client.login(token).then((token) => {
 	first();
 });
 
-
+//---------------------------------------------------------------------------------------------
 const first = async ()=>{
 	client.user.setPresence({ activities: [{ name: 'salut ' }], status: 'dnd' });
 	await sleep(15);

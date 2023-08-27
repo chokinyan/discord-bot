@@ -1,0 +1,4 @@
+{
+    "python" : "py -u",
+    "javascript" : "node"
+}

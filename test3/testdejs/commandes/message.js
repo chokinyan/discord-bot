@@ -8,7 +8,7 @@ module.exports = {
         .setDescription("donne le message"),
 
     async excute(interaction){
-        interaction.reply({content : "Veuillez patienter le temps de la connexion",ephemeral : true});
+        await interaction.reply({content : "Veuillez patienter le temps de la connexion",ephemeral : true});
         const choix = new ActionRowBuilder()
             .setComponents(
                 new StringSelectMenuBuilder()
