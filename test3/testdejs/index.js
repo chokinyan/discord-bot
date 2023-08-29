@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
 const {token} = require('../testdejs/donné & autre/config.json');
-const test = require('../testdejs/donné & autre/reponse');
+const {reponse} = require('../testdejs/donné & autre/reponse');
 const use_commands = require('./use_commands');
 const {sleep} = require('./donné & autre/wait');
 const {run_code} = require("./donné & autre/code_run");
@@ -96,7 +96,6 @@ client.on(Events.GuildMemberAdd, async member => {
 });
 
 client.on(Events.MessageCreate , async message => {
-	//test.reponse(message,client);
 	var chan_mess = await message.channel.messages.fetch({limit : 2});
 	if(chan_mess.at(1).author.id === client.user.id && chan_mess.at(1).content.includes("envoyer votre code en")){
 		var language = chan_mess.at(1).content.slice(22);
@@ -124,7 +123,10 @@ client.on(Events.MessageCreate , async message => {
 				message.reply(err);
 			});
 		};
-	};
+	}
+	else{
+		reponse(message,client);
+	}
 });
 
 
