@@ -1,3 +1,5 @@
 {
-    "discord.enabled": false
+    "discord.enabled": false,
+    "FSharp.suggestGitignore": false,
+    "dotnet.defaultSolution": "WebApplication1.sln"
 }

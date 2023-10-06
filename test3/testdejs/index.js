@@ -102,25 +102,27 @@ client.on(Events.MessageCreate , async message => {
 		if(chan_mess.at(0).attachments.size !== 0){
 			fetch(chan_mess.at(0).attachments.at(0)?.url)
 				.then((rep)=>{rep?.text().then((txt)=>{
-					run_code(txt,`${language}`)
+					run_code(txt,`${language}`,message.author.id)
 					.then((cmd)=>{
-						message.reply(cmd)
+						console.log(`${cmd}`);
+						message.reply(`${cmd}`)
 					})
 					.catch((err)=>{
-						message.reply(err)
+						message.reply(`${err}`);
 					})
 				})
 			})
 			.catch((err)=>{
-				console.error(err)
+				console.error(err);
 			})
 		}
 		else{
-			run_code(chan_mess.at(0).content,language).then((cmd)=>{
-				message.reply(cmd);
+			run_code(chan_mess.at(0).content,language,chan_mess.at(0).author.id).then((cmd)=>{
+				console.log(`${cmd}`);
+				message.reply(`${cmd}`);
 			})
 			.catch((err)=>{
-				message.reply(err);
+				message.reply(`${err}`);
 			});
 		};
 	}
