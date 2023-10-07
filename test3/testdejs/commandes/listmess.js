@@ -5,7 +5,7 @@ let listmess = [];
 let listauto = [];
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("list_message")
         .setDescription("list des message de la premier page")
         .addIntegerOption(option =>

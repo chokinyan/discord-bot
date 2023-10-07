@@ -39,7 +39,7 @@ const get_anime  = (nom,off)=>{
 };
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
             .setName("anime")
             .setDescription("recherche un anime")
             .addStringOption(option =>

@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 const {identifiant,mdp} = require('../donné & autre/config.json');
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("mbn_mess")
         .setDescription("message"),
 

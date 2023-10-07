@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const {testz} = require('../donné & autre/objet_mess_return');
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("message")
         .setDescription("donne le message"),
 

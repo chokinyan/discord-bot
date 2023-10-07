@@ -2,7 +2,7 @@ const {SlashCommandBuilder,EmbedBuilder} = require("discord.js");
 const request = require('request');
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("r34")
     .setDescription("rule34")
     .setNSFW(true)

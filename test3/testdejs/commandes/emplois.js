@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("emplois")
         .setDescription("donne l'emplois du temps"),
 

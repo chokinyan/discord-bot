@@ -4,7 +4,7 @@ const {twitch_id} = require('../donné & autre/config.json');
 const request = require('request');
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("twitch_ifo")
     .setDescription("get info of a twitch channel")
     .addStringOption(option=>

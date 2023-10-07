@@ -2,7 +2,7 @@ const {SlashCommandBuilder} = require("discord.js");
 const use_commands = require("../use_commands")
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("reload")
         .setDescription("reload command of the bot"),
 

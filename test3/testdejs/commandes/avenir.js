@@ -1,7 +1,7 @@
 const {SlashCommandBuilder} = require("discord.js");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("avenir")
         .setDescription("tu vas faire quoi"),
 

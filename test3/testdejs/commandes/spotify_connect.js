@@ -24,7 +24,7 @@ const get_api_key = new Promise((resolve,reject)=>{
 });
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("spotifyc")
     .setDescription("link your spotify account to the bot"),
 

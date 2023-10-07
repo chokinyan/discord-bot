@@ -4,7 +4,7 @@ const {nasa_id} = require('../donné & autre/config.json');
 
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("nasa")
     .setDescription("nasa api"),
 

@@ -7,7 +7,7 @@ Player = createAudioPlayer()
 //----------------------------------------------------------------------------------------------------------------------------------
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("voc")
         .setDescription("sound play")
         .addStringOption(option =>

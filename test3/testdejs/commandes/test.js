@@ -3,7 +3,7 @@ const {SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder} = require
 const voc = require("./voc");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("test")
     .setDescription("creator bot exclu for test")
     .addUserOption(option=>

@@ -4,7 +4,7 @@ const {testz} = require('../donné & autre/note')
 const path = require("node:path");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("note")
         .setDescription("donner un screen de tes notes"),
 

@@ -6,7 +6,7 @@ const {sleep} = require('../donné & autre/wait')
 //const rest = new REST().setToken(token);
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("delcom")
         .setDescription("remove a commande")
         .addStringOption(option =>

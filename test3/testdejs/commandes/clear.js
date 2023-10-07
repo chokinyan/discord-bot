@@ -1,7 +1,7 @@
 const {SlashCommandBuilder,InteractionCollector} = require("discord.js");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("clear")
         .setDescription("clear message")
         .addIntegerOption(option =>

@@ -3,7 +3,7 @@ const {SlashCommandBuilder} = require("discord.js");
 const voc = require("./voc");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("pause")
     .setDescription("attend stp"),
 

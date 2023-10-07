@@ -4,7 +4,7 @@ const {twitch_id,twitch_sid} = require('../donné & autre/config.json');
 const request = require('request');
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("twitch_chat")
     .setDescription("twitch chat"),
 

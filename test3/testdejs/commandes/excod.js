@@ -16,7 +16,7 @@ const language = new ActionRowBuilder().
     );
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
         .setName("excod")
         .setDescription("execute du code dans certain language"),
 

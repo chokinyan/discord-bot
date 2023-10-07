@@ -4,7 +4,7 @@ const {AudioPlayer} = require("@discordjs/voice");
 const voc = require("./voc");
 
 module.exports = {
-    data : test = new SlashCommandBuilder()
+    data : command = new SlashCommandBuilder()
     .setName("s")
     .setDescription("ferme ta gueule le bot"),
 
