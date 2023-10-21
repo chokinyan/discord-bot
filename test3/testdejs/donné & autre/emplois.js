@@ -9,16 +9,25 @@ const empl = async function empl(identifiant,mdp){
     await page.setViewport({width: 1000, height: 1000});
     //-----------------------------------------------------------------------------------------------
     /* choix du lieux */
-    await page.click(".fo-connect__link");
-    await page.waitForSelector('.form__label',{visible : 'visible'});
-    await page.click('.form__label');
-    await page.click('#button-submit',{delay : 50});
-    if (page.url() == "https://cas.monbureaunumerique.fr/login?service=https%3A%2F%2Fwww.monbureaunumerique.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT&submit=Valider"){
-        while (page.url() == "https://cas.monbureaunumerique.fr/login?service=https%3A%2F%2Fwww.monbureaunumerique.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT&submit=Valider"){
-            await page.click('.form__label');
-            await page.click('#button-submit',{delay : 50})
-        };
-    };
+    await page.setCookie({
+        value : "EDU",
+        name : "preselection",
+        domain : "cas.monbureaunumerique.fr",
+        path : "/",
+        httpOnly : true,
+        secure : true,
+    });
+    for(let i = 0;i<3;i++){await page.evaluate(_=>{
+        for(el of document.getElementsByClassName("fo-connect__link")){el?.click()};
+    })};
+    //await page.click('.form__label');
+    //await page.click('#button-submit',{delay : 50});
+    //if (page.url() == "https://cas.monbureaunumerique.fr/login?service=https%3A%2F%2Fwww.monbureaunumerique.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT&submit=Valider"){
+    //    while (page.url() == "https://cas.monbureaunumerique.fr/login?service=https%3A%2F%2Fwww.monbureaunumerique.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT&submit=Valider"){
+    //        await page.click('.form__label');
+    //        await page.click('#button-submit',{delay : 50})
+    //    };
+    //};
     //------------------------------------------------------------------------------------------------
     /* connexion */
     await page.waitForSelector('#bouton_eleve',{visible : 'visible'});

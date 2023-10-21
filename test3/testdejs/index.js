@@ -103,12 +103,12 @@ client.on(Events.MessageCreate , async message => {
 			fetch(chan_mess.at(0).attachments.at(0)?.url)
 				.then((rep)=>{rep?.text().then((txt)=>{
 					run_code(txt,`${language}`,message.author.id)
-					.then((cmd)=>{
-						console.log(`${cmd}`);
-						message.reply(`${cmd}`)
+					.then(async (cmd)=>{
+						await message.reply(`${cmd}`)
 					})
-					.catch((err)=>{
-						message.reply(`${err}`);
+					.catch(async (err)=>{
+						await message.reply(`${err}`);
+						console.error(err);
 					})
 				})
 			})
@@ -117,18 +117,18 @@ client.on(Events.MessageCreate , async message => {
 			})
 		}
 		else{
-			run_code(chan_mess.at(0).content,language,chan_mess.at(0).author.id).then((cmd)=>{
-				console.log(`${cmd}`);
-				message.reply(`${cmd}`);
+			run_code(chan_mess.at(0).content,language,chan_mess.at(0).author.id).then(async (cmd)=>{
+				await message.reply(`${cmd}`);
 			})
 			.catch((err)=>{
 				message.reply(`${err}`);
+				console.error(err);
 			});
 		};
 	}
 	else{
 		reponse(message,client);
-	}
+	};
 });
 
 
