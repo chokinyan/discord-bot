@@ -49,7 +49,7 @@ client.once(Events.ClientReady, () => {
 });
 //------------------------------------------------------------------------------------------
 client.on(Events.InteractionCreate, async interaction  => {
-	
+	console.log(interaction);
 	if(interaction.component !== undefined){
 		//const compot = compcom[compcom?.map(x => (interaction?.customId in x?.name))?.indexOf(true)]?.comm;
 		/*if error TypeError: Cannot read properties of undefined (reading 'compot')
