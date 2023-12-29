@@ -32,20 +32,20 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Program (windows)",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test3\\testdejs\\index.js"
+            "program": "${workspaceFolder}\\bot\\index.js"
         },
         {
             "type": "node",
             "request": "launch",
-            "name" : "codespace launch",
+            "name" : "Launch Program (Linux / Unix / Mac)",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/test3/testdejs/index.js"
+            "program": "${workspaceFolder}/bot/index.js"
         }
     ]
 }

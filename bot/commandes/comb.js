@@ -44,7 +44,7 @@ module.exports = {
                 await page.click("body > div.header > div.header__set > div.header__set2 > nav > div > div > ul > li:nth-child(1) > a");;
 
             };
-            //await page.screenshot({path : "test3/testdejs/video/test.png"});
+            //await page.screenshot({path : "bot/video/test.png"});
             interaction.editReply({content : "test de connexion reussie",ephemeral:true});
             await browser.close();
     }

@@ -1,6 +1,7 @@
 const {SlashCommandBuilder , EmbedBuilder,ActionRowBuilder,ButtonBuilder,ButtonStyle} = require("discord.js");
 const request = require('request');
 const {anime_id} = require("../donné & autre/config.json");
+const {anime_info} = require('../donné & autre/anime_info');
 const nsfwanim = ["r","r+","rx"];
 
 const get_anime  = (nom,off)=>{
@@ -10,7 +11,7 @@ const get_anime  = (nom,off)=>{
                 headers : {"X-MAL-CLIENT-ID" : anime_id},
                 json : true
         };
-        request.get(parametre,(err,_rep,body)=>{
+        request.get(parametre,async (err,_rep,body)=>{
             if(JSON.stringify(body).includes('500 Internal Server Error')){
                 reject("serveur ne reponds pas");
             };
@@ -18,21 +19,12 @@ const get_anime  = (nom,off)=>{
                 console.error(err);
             }
             else{
-                const parametreD = {
-                    url : `https://api.myanimelist.net/v2/anime/${body.data[0].node.id}?fields=title,synopsis,rank,nsfw,rating`,
-                    headers : {"X-MAL-CLIENT-ID" : anime_id},
-                    json : true
+                try{
+                    resolve(await anime_info(body.data[0].node.id)) ;
                 }
-                request.get(parametreD,(errD,_repD,bodyD)=>{
-                    if(errD){
-                        console.error(errD);
-                    }
-                    else{
-
-                        resolve(bodyD);
-                    };
-                });
-
+                catch(e){
+                    reject(e)
+                }
             };
         });
     });

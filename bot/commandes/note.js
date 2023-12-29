@@ -42,7 +42,7 @@ module.exports = {
         await interaction.editReply({content : "veuillez patienter",components : []});
         
         testz().then(async () =>{
-            await interaction.editReply({files : [{attachment: `test3/testdejs/image/note${interaction.values}.png` }],content : "",ephemeral : true});
+            await interaction.editReply({files : [{attachment: `bot/image/note${interaction.values}.png` }],content : "",ephemeral : true});
         });
         
         const imagePath = path.join(__dirname, 'image');

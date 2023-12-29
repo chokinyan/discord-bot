@@ -53,7 +53,7 @@ const testz = async function obj() {
         await page.select(`#idPeriode`,`[${i}]`);
         const note = await page.$("#releve-eleve");
         const bxnote = await note.boundingBox();
-        await page.screenshot({path : `test3/testdejs/image/note${i-25}.png`,clip:{x:bxnote["x"],y:bxnote["y"],width:bxnote["width"],height:bxnote["height"]}});
+        await page.screenshot({path : `bot/image/note${i-25}.png`,clip:{x:bxnote["x"],y:bxnote["y"],width:bxnote["width"],height:bxnote["height"]}});
     };
     
     await page.click("#idPeriode");

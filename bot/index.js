@@ -2,8 +2,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
-const {token} = require('../testdejs/donné & autre/config.json');
-const {reponse} = require('../testdejs/donné & autre/reponse');
+const {token} = require('../bot/donné & autre/config.json');
+const {reponse} = require('../bot/donné & autre/reponse');
 const use_commands = require('./use_commands');
 const {sleep} = require('./donné & autre/wait');
 const {run_code} = require("./donné & autre/code_run");
@@ -49,7 +49,9 @@ client.once(Events.ClientReady, () => {
 });
 //------------------------------------------------------------------------------------------
 client.on(Events.InteractionCreate, async interaction  => {
-	console.log(interaction);
+	
+	//console.log(interaction);
+	
 	if(interaction.component !== undefined){
 		//const compot = compcom[compcom?.map(x => (interaction?.customId in x?.name))?.indexOf(true)]?.comm;
 		/*if error TypeError: Cannot read properties of undefined (reading 'compot')

@@ -25,7 +25,7 @@ module.exports = {
         try{
             await interaction.reply({content : "Veuillez patienter ce sera envoyer en mp",ephemeral : true});
             await empl(id,mdp);
-            await interaction.user.send({files : [{ attachment: "test3/testdejs/image/emplois.png" }],content:''});
+            await interaction.user.send({files : [{ attachment: "bot/image/emplois.png" }],content:''});
         }
         catch (error){
             try{
@@ -36,7 +36,7 @@ module.exports = {
             };
         };
         try{
-            fs.unlinkSync("test3/testdejs/image/emplois.png");
+            fs.unlinkSync("bot/image/emplois.png");
         }
         catch(e){
             return;

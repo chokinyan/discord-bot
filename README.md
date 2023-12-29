@@ -1,11 +1,31 @@
-					A lot of file for just one discord bot.
-						
-					To use this bot you need "test3/testdejs/donné & autre/config.json"
-					In the file :
-					{
-					"token" :
-					"clientId" :
-					"identifiant" :
-					"mdp" :
-					"navigatorpath":
-					}
+To use this bot you need "bot/donné & autre/config.json"
+
+    {
+
+    "token" : "",
+
+    "clientId" : "",
+
+    "identifiant" : "",
+
+    "mdp" : "",
+
+    "navigatorpath": "",
+
+    "bot_owner_id" : "",
+
+    "anime_id" : "",
+
+    "sp_id" : "",
+
+    "sp_sid" : "",
+
+    "nasa_id" : "",
+
+    "tts_id" : "",
+
+    "twitch_id" : "",
+
+    "twitch_sid" : ""
+
+}

@@ -6,6 +6,6 @@ module.exports = {
         .setDescription("tu vas faire quoi"),
 
     async excute(interaction){
-        interaction.reply({files : [{ attachment: "test3/testdejs/video/avenir.mp4" }] });
+        interaction.reply({files : [{ attachment: "bot/video/avenir.mp4" }] });
     },
 };

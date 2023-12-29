@@ -60,7 +60,7 @@ const empl = async function empl(identifiant,mdp){
     await page.waitForSelector('#cdt-scheduler > div.scheduler__view.js-scheduler__view');
     const emp = await page.$("#cdt-scheduler > div.scheduler__view.js-scheduler__view");
     const empbx = await emp.boundingBox();
-    await page.screenshot({path : `test3/testdejs/image/emplois.png`,clip:{x:empbx["x"],y:empbx["y"],width:empbx["width"],height:empbx["height"]}});
+    await page.screenshot({path : `bot/image/emplois.png`,clip:{x:empbx["x"],y:empbx["y"],width:empbx["width"],height:empbx["height"]}});
     await browser.close();
 };
 

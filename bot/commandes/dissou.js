@@ -18,8 +18,8 @@ module.exports = {
                     continue;
                 }
                 else{
-                    await y.user.send({files :[{attachment :'test3/testdejs/gif/téléchargé.gif'}],content : `Bon meme si tu te demande pk je ressois ca et que tu t'en fout ba la zone n2 est fermer le délire a durée et na plus d'utilité.\n J'oficialise la rébelion a officielement perdu`});
-                    await y.user.send({files :[{attachment :'test3/testdejs/gif/Nico.gif'}],content : `Parcontre je garde le serv ca va me permettre pour bien test ce bot et le faire grandir`});
+                    await y.user.send({files :[{attachment :'bot/gif/téléchargé.gif'}],content : `Bon meme si tu te demande pk je ressois ca et que tu t'en fout ba la zone n2 est fermer le délire a durée et na plus d'utilité.\n J'oficialise la rébelion a officielement perdu`});
+                    await y.user.send({files :[{attachment :'bot/gif/Nico.gif'}],content : `Parcontre je garde le serv ca va me permettre pour bien test ce bot et le faire grandir`});
                     await y.user.send({content : `Ouai j'adore les animes regarder eminence in shadow et alors bon ok la reel A+`});
                     y.kick()
                     //interaction.reply(`${y.user} viens d'etre tej avec tout mon irespect`);
