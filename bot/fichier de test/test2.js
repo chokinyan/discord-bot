@@ -12,10 +12,12 @@
 //        }
 //    });
 //})();
-const {identifiant,mdp} = require('./donné & autre/config.json');
-const {empl} = require('./donné & autre/emplois');
-(async ()=>{
-    empl(identifiant,mdp);
-})();
+//const {identifiant,mdp} = require('../donné & autre/config.json');
+//const {empl} = require('../donné & autre/emplois');
+//(async ()=>{
+//    empl(identifiant,mdp);
+//})();
 
 //for(el of document.getElementsByClassName('cas__wayf-form')){el?.selection?.value}
+
+console.log(new Date().getFullYear());

@@ -7,7 +7,7 @@ const {reponse} = require('../bot/donné & autre/reponse');
 const use_commands = require('./use_commands');
 const {sleep} = require('./donné & autre/wait');
 const {run_code} = require("./donné & autre/code_run");
-const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"},{name : ['language'],comm : "excod"}];
+const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"},{name : ['language'],comm : "excod"},{name : ['nextanimeS','prevanimeS'],comm : "seasonal_anime"}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 
 //------------------------------------------------------------------------------------------

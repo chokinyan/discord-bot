@@ -1,4 +1,5 @@
 const {SlashCommandBuilder,ActionRowBuilder,StringSelectMenuBuilder} = require("discord.js");
+
 const language = new ActionRowBuilder().
     setComponents(
         new StringSelectMenuBuilder().setCustomId("language")
@@ -21,10 +22,10 @@ module.exports = {
         .setDescription("execute du code dans certain language"),
 
     async excute(interaction){
-        await interaction.reply({content : "test",components : [language]});
+        await interaction.reply({content : "choose your langue",components : [language]});
     },
 
     async excomp(interaction){
-        await interaction.update({content : `envoyer votre code en ${interaction.values}`,components : []});
+        await interaction.update({content : `send your code ${interaction.values}`,components : []});
     }
 };

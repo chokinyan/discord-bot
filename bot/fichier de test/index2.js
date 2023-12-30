@@ -1,4 +1,4 @@
-const {twitch_id,twitch_sid} = require('./donné & autre/config.json');
+const {twitch_id,twitch_sid} = require('../donné & autre/config.json');
 const request = require('request');
 
 const parametre = {
