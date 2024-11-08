@@ -1,28 +1,23 @@
 const {SlashCommandBuilder , EmbedBuilder,ActionRowBuilder,ButtonBuilder,ButtonStyle} = require("discord.js");
-const request = require('request');
-const {anime_id} = require("../donné & autre/config.json");
-const {anime_info} = require('../donné & autre/anime_info');
+const axios = require('axios');
+const {anime_id} = require("../fichier_utilitaire/config.json");
+const {anime_info} = require('../fichier_utilitaire/anime_info');
 const nsfwanim = ["r","r+","rx"];
 
 
-const anime = (season,year,off)=>{
-    return new Promise((resolve,reject)=>{
+const anime = async (season, year, off) => {
+    try {
         const parametre = {
-            url : `https://api.myanimelist.net/v2/anime/season/${year}/${season}?limit=1&offset=${off}`,
-            headers : {"X-MAL-CLIENT-ID" : anime_id},
-            json : true
+            url: `https://api.myanimelist.net/v2/anime/season/${year}/${season}?limit=1&offset=${off}`,
+            headers: { "X-MAL-CLIENT-ID": anime_id },
         };
-        request.get(parametre,async (err,_rep,body)=>{
-            if(err){
-                reject(err);
-            }
-            else{
-                const info = await anime_info(body.data[0].node.id);
-                resolve(info);
-            }
-        });
-    })
-}
+        const response = await axios.get(parametre.url, { headers: parametre.headers });
+        const info = await anime_info(response.data.data[0].node.id);
+        return info;
+    } catch (err) {
+        throw err;
+    }
+};
 
 
 module.exports = {

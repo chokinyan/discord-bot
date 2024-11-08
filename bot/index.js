@@ -2,11 +2,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits} = require('discord.js');
-const {token} = require('../bot/donné & autre/config.json');
-const {reponse} = require('../bot/donné & autre/reponse');
+const {token} = require('../bot/fichier_utilitaire/config.json');
+const {reponse} = require('../bot/fichier_utilitaire/reponse');
 const use_commands = require('./use_commands');
-const {sleep} = require('./donné & autre/wait');
-const {run_code} = require("./donné & autre/code_run");
+const {sleep} = require('./fichier_utilitaire/wait');
+const {run_code} = require("./fichier_utilitaire/code_run");
 const compcom = [{name : ['select'],comm : 'test'},{name : ['message'],comm : 'message'},{name : ['note'],comm : 'note'},{name:['validation','nvalidation'],comm : 'delcom',id_val : ""},{name : ['nextanime','prevanime'],comm : "anime"},{name : ['language'],comm : "excod"},{name : ['nextanimeS','prevanimeS'],comm : "seasonal_anime"}];
 /* name : compent name, comm : file name \\ alwais edit after add an file with compent*/
 

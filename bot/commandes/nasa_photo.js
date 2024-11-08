@@ -1,6 +1,6 @@
 const {SlashCommandBuilder} = require("discord.js");
-const request = require("request");
-const {nasa_id} = require('../donné & autre/config.json');
+const axios = require("axios");
+const {nasa_id} = require('../fichier_utilitaire/config.json');
 
 
 module.exports = {
@@ -12,14 +12,13 @@ module.exports = {
         const parametre = {
             url : `https://api.nasa.gov/planetary/apod?api_key=${nasa_id}`
         };
-        request.get(parametre,(err,rep,body)=>{
-            if(err){
-                console.log(err);
-            }
-            else{
-                interaction.reply({content : `${body}`,tts : true});
-            };
-        });
+        try {
+            const response = await axios.get(parametre.url);
+            const body = response.data;
+            interaction.reply({content : `${body}`,tts : true});
+        } catch (err) {
+            console.log(err);
+        }
     },
 
 };

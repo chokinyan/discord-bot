@@ -1,6 +1,6 @@
 File and commande name need to be the same
 
-To use this bot you need "bot/donné & autre/config.json"
+To use this bot you need "bot/fichier_utilitaire/config.json"
 
     {
 

@@ -12,8 +12,8 @@
 //        }
 //    });
 //})();
-//const {identifiant,mdp} = require('../donné & autre/config.json');
-//const {empl} = require('../donné & autre/emplois');
+//const {identifiant,mdp} = require('../fichier_utilitaire/config.json');
+//const {empl} = require('../fichier_utilitaire/emplois');
 //(async ()=>{
 //    empl(identifiant,mdp);
 //})();

@@ -1,7 +1,7 @@
 const {SlashCommandBuilder,ActionRowBuilder,ButtonBuilder, ButtonStyle} = require("discord.js");
 const { REST, Routes } = require('discord.js');
-const { clientId,token} = require('../donné & autre/config.json');
-const {sleep} = require('../donné & autre/wait')
+const { clientId,token} = require('../fichier_utilitaire/config.json');
+const {sleep} = require('../fichier_utilitaire/wait')
 
 //const rest = new REST().setToken(token);
 

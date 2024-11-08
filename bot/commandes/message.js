@@ -1,6 +1,6 @@
 const {SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder} = require("discord.js");
 const puppeteer = require('puppeteer');
-const {testz} = require('../donné & autre/objet_mess_return');
+const {testz} = require('../fichier_utilitaire/objet_mess_return');
 
 module.exports = {
     data : command = new SlashCommandBuilder()

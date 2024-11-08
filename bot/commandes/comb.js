@@ -1,7 +1,7 @@
 require("ffmpeg-static");
 const {SlashCommandBuilder} = require("discord.js");
 const puppeteer = require('puppeteer');
-const {identifiant,mdp} = require('../donné & autre/config.json');
+const {identifiant,mdp} = require('../fichier_utilitaire/config.json');
 
 module.exports = {
     data : command = new SlashCommandBuilder()

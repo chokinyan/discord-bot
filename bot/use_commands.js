@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path')
 const { REST, Routes, Client,GatewayIntentBits } = require('discord.js');
-const { clientId, token } = require('./donné & autre/config.json');
+const { clientId, token } = require('./fichier_utilitaire/config.json');
 const os = require('os');
 
 module.exports = {

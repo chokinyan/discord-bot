@@ -1,5 +1,5 @@
 const {SlashCommandBuilder} = require("discord.js");
-const {empl} = require('../donné & autre/emplois')
+const {empl} = require('../fichier_utilitaire/emplois')
 const fs = require('fs');
 
 

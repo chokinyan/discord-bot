@@ -1,6 +1,6 @@
 const {SlashCommandBuilder} = require("discord.js");
 const puppeteer = require('puppeteer');
-const {identifiant,mdp} = require('../donné & autre/config.json');
+const {identifiant,mdp} = require('../fichier_utilitaire/config.json');
 let listmess = [];
 let listauto = [];
 

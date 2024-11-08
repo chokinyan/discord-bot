@@ -1,33 +1,24 @@
 const {SlashCommandBuilder , EmbedBuilder,ActionRowBuilder,ButtonBuilder,ButtonStyle} = require("discord.js");
-const request = require('request');
-const {anime_id} = require("../donné & autre/config.json");
-const {anime_info} = require('../donné & autre/anime_info');
+const axios = require('axios');
+const {anime_id} = require("../fichier_utilitaire/config.json");
+const {anime_info} = require('../fichier_utilitaire/anime_info');
 const nsfwanim = ["r","r+","rx"];
 
-const get_anime  = (nom,off)=>{
-    return new Promise((resolve,reject)=>{
+const get_anime  = async (nom, off) => {
+    try {
         const parametre = {
-                url : `https://api.myanimelist.net/v2/anime?q='${nom}'&nsfw=true&offset=${off}`,
-                headers : {"X-MAL-CLIENT-ID" : anime_id},
-                json : true
+            url : `https://api.myanimelist.net/v2/anime?q='${nom}'&nsfw=true&offset=${off}`,
+            headers : {"X-MAL-CLIENT-ID" : anime_id},
         };
-        request.get(parametre,async (err,_rep,body)=>{
-            if(JSON.stringify(body).includes('500 Internal Server Error')){
-                reject("serveur ne reponds pas");
-            };
-            if(err){
-                console.error(err);
-            }
-            else{
-                try{
-                    resolve(await anime_info(body.data[0].node.id)) ;
-                }
-                catch(e){
-                    reject(e)
-                }
-            };
-        });
-    });
+        const response = await axios.get(parametre.url, { headers: parametre.headers });
+        if(JSON.stringify(response.data).includes('500 Internal Server Error')){
+            throw new Error("serveur ne reponds pas");
+        }
+        const info = await anime_info(response.data.data[0].node.id);
+        return info;
+    } catch (err) {
+        throw err;
+    }
 };
 
 module.exports = {

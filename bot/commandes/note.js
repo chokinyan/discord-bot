@@ -1,6 +1,6 @@
 const {SlashCommandBuilder,ActionRowBuilder, StringSelectMenuBuilder} = require("discord.js");
 const fs = require('node:fs');
-const {testz} = require('../donné & autre/note')
+const {testz} = require('../fichier_utilitaire/note')
 const path = require("node:path");
 
 module.exports = {
